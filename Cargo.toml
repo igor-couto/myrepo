@@ -1,5 +1,5 @@
 [package]
-name = "mygh"
+name = "myrepo"
 version = "1.0.0"
 authors = ["Igor Couto <igor.fcouto@gmail.com>"]
 edition = "2021"
