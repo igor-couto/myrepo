@@ -6,4 +6,3 @@ edition = "2021"
 
 [dependencies]
 ureq = "2.3.0"
-colored = "2.0"
