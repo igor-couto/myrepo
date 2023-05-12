@@ -1,0 +1,9 @@
+[package]
+name = "mygh"
+version = "1.0.0"
+authors = ["Igor Couto <igor.fcouto@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+ureq = "2.3.0"
+colored = "2.0"
