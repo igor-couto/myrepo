@@ -1,0 +1,32 @@
+name: Tests
+
+on: push
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    
+    - name: Setup Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        override: true
+    
+    - name: Check formatting
+      uses: actions-rs/cargo@v1
+      with:
+        command: fmt
+        args: --check
+
+    - name: Run tests
+      uses: actions-rs/cargo@v1
+      with:
+        command: test
