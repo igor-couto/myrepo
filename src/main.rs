@@ -1,14 +1,18 @@
 use std::env;
+use std::process::{exit, Command};
 use std::time::Duration;
 use ureq;
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    if args.len() > 2 {
-        eprintln!("Usage: {} <substring>", args[0]);
-        std::process::exit(1);
+    let mut args: Vec<String> = env::args().collect();
+    if args.len() > 3 {
+        eprintln!("Usage: {} [-c | --clone] <substring>", args[0]);
+        exit(1);
     }
-    let substring_to_find = args.get(1);
+    args.remove(0);
+
+    let clone_repos = args.contains(&"-c".to_string()) || args.contains(&"--clone".to_string());
+    let substring_to_find = args.iter().find(|&arg| arg != "-c" && arg != "--clone");
 
     let user_name = "igor-couto"; // TODO: get this from configuration
     let timeout_seconds = 5;
@@ -35,10 +39,22 @@ fn main() {
         let repository_names = extract_repository_names(&response);
 
         for name in repository_names {
-            if substring_to_find.map_or(true, |substring_to_find| name.contains(substring_to_find))
-            {
-                println!("https://github.com/{}/\x1b[0;32m{}\x1b[0m", user_name, name);
+            if substring_to_find.map_or(true, |substring| name.contains(substring)) {
                 found = true;
+                println!("https://github.com/{}/\x1b[0;32m{}\x1b[0m", user_name, name);
+
+                if clone_repos {
+                    let repo_url = format!("https://github.com/{}/{}", user_name, name);
+                    let output = Command::new("git")
+                        .arg("clone")
+                        .arg(&repo_url)
+                        .output()
+                        .expect("\x1b[0;31mFailed\x1b[0m to execute command");
+                    if !output.status.success() {
+                        eprintln!("\x1b[0;31mFailed\x1b[0m to clone repository: {}", repo_url);
+                        exit(1);
+                    }
+                }
             }
         }
 
