@@ -3,7 +3,7 @@
 [![Build Badge](https://github.com/igor-couto/myrepo/actions/workflows/build.yml/badge.svg)](https://github.com/igor-couto/myrepo/actions/workflows/build.yml)
 [![Test Badge](https://github.com/igor-couto/myrepo/actions/workflows/test.yml/badge.svg)](https://github.com/igor-couto/myrepo/actions/workflows/test.yml)
 
-**myrepo** is a command-line tool written in Rust that searches for yours GitHub repositories by a substring. It can also clone the repositories it finds.
+**myrepo** is a command-line tool written in Rust that allows users to search for theirs GitHub repositories by name. It also provides optional functionality to clone any found repositories. Simple, efficient, and easy to use, this tool is a valuable addition to any developer's toolkit.
 
 ## Features
 
