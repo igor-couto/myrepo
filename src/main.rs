@@ -37,10 +37,7 @@ fn main() {
         for name in repository_names {
             if substring_to_find.map_or(true, |substring_to_find| name.contains(substring_to_find))
             {
-                println!(
-                    "https://github.com/{}/\x1b[0;32m  {}\x1b[0m",
-                    user_name, name
-                );
+                println!("https://github.com/{}/\x1b[0;32m{}\x1b[0m", user_name, name);
                 found = true;
             }
         }
@@ -69,4 +66,19 @@ fn extract_repository_names(response: &str) -> Vec<String> {
         current_start = end;
     }
     names
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_extract_repository_names() {
+        let response = r#"[
+            {"full_name":"user/repo1",...},
+            {"full_name":"user/repo2",...}
+        ]"#;
+        let names = extract_repository_names(response);
+        assert_eq!(names, vec!["repo1", "repo2"]);
+    }
 }
