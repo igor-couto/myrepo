@@ -8,6 +8,13 @@ env:
 jobs:
   Publish:
     runs-on: ubuntu-latest
+
+    env:
+      branch: ${{ github.head_ref || github.ref_name }}
+
+    outputs:
+      semVer: ${{ steps.set_semver.outputs.semVer }}
+
     steps:
 
     - name: Checkout the code
@@ -39,7 +46,7 @@ jobs:
     - name: Output semver
       id: set_semver
       run: |
-        if [[ "${{ github.ref }}" == 'refs/heads/main' ]];
+        if [[ ${{ env.branch }} == 'main' ]];
         then
           echo "::set-output name=semVer::$GitVersion_MajorMinorPatch"
         else
