@@ -52,6 +52,8 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Author
 
-Feel free to get in touch with me regarding any questions or issues about the myrepo cli tool.
+Feel free to get in touch with me regarding any questions or issues about the **myrepo cli tool**.
+If you are having problems, please let me know by [filing an issue](https://github.com/igor-couto/myrepo/issues)
+
 
 * **Igor Couto** - [igor.fcouto@gmail.com](mailto:igor.fcouto@gmail.com)
