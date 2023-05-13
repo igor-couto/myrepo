@@ -39,7 +39,7 @@ jobs:
     - name: Output semver
       id: set_semver
       run: |
-        if [[ ${{ env.branch }} == 'main' ]];
+        if [[ "${{ github.ref }}" == 'refs/heads/main' ]];
         then
           echo "::set-output name=semVer::$GitVersion_MajorMinorPatch"
         else
