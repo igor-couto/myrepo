@@ -6,7 +6,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  Test:
+  Build:
     runs-on: ubuntu-latest
     steps:
 
@@ -20,7 +20,7 @@ jobs:
         toolchain: stable
         override: true
     
-    - name: Check formatting
+    - name: Build
       uses: actions-rs/cargo@v1
       with:
         command: build
