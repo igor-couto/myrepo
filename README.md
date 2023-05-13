@@ -3,7 +3,7 @@
 [![Build Badge](https://github.com/igor-couto/myrepo/actions/workflows/build.yml/badge.svg)](https://github.com/igor-couto/myrepo/actions/workflows/build.yml)
 [![Test Badge](https://github.com/igor-couto/myrepo/actions/workflows/test.yml/badge.svg)](https://github.com/igor-couto/myrepo/actions/workflows/test.yml)
 
-This is a command-line tool written in Rust that searches for yours GitHub repositories by a substring. It can also clone the repositories it finds.
+**myrepo** is a command-line tool written in Rust that searches for yours GitHub repositories by a substring. It can also clone the repositories it finds.
 
 ## Features
 
@@ -52,8 +52,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Author
 
+* **Igor Couto** - [igor.fcouto@gmail.com](mailto:igor.fcouto@gmail.com)
+
 Feel free to get in touch with me regarding any questions or issues about the **myrepo cli tool**.
 If you are having problems, please let me know by [filing an issue](https://github.com/igor-couto/myrepo/issues)
-
-
-* **Igor Couto** - [igor.fcouto@gmail.com](mailto:igor.fcouto@gmail.com)
