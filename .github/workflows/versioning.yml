@@ -34,6 +34,7 @@ jobs:
 
     - name: Git Fetch Unshallow
       run: git fetch --prune --tags --unshallow
+
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v0.9.7
       with:
@@ -52,3 +53,18 @@ jobs:
         else
           echo "::set-output name=semVer::$GitVersion_SemVer"
         fi
+
+    - name: Release
+      run: |
+        cargo build --release
+    
+    - name: Zip Content
+      run: |
+        zip -r myrepo-windows-${{ steps.set_semver.outputs.semVer }}.zip target/release/myrepo.exe
+    
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: myrepo-windows-${{ steps.set_semver.outputs.semVer }}
+        path: myrepo-windows-${{ steps.set_semver.outputs.semVer }}.zip
+        if-no-files-found: error
