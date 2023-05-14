@@ -74,14 +74,14 @@ jobs:
     needs: Release
     env:
       branch: ${{ github.head_ref || github.ref_name }}
-      version: ${{ needs.build.outputs.semVer }}
-      tag: v${{ needs.build.outputs.semVer }}
-      windows_package_name: 'myrepo-windows-${{ needs.build.outputs.semVer }}'
-      packageFileName: 'myrepo-windows-${{ needs.build.outputs.semVer }}.exe'
+      version: ${{ needs.Release.outputs.semVer }}
+      tag: v${{ needs.Release.outputs.semVer }}
+      windows_package_name: 'myrepo-windows-${{ needs.Release.outputs.semVer }}'
+      packageFileName: 'myrepo-windows-${{ needs.Release.outputs.semVer }}.exe'
       packageId: 'myrepo'
-
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout the code
+      uses: actions/checkout@v2
 
     - name: Git Fetch Unshallow
       run: git fetch --prune --tags --unshallow
