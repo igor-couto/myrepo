@@ -100,7 +100,7 @@ jobs:
         allowUpdates: true
         draft: false
         tag: ${{ env.tag }}
-        name: myrepo-${{ env.version}}
+        name: myrepo-${{ env.version }}
         token: ${{ github.token }}
 
     - name: Upload release windows
