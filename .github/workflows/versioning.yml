@@ -61,14 +61,14 @@ jobs:
     - name: List files 
       run: |
         ls -la 
-        
+
     - name: List files in target/release
       run: |
         ls -la target/release
 
     - name: Zip Content
       run: |
-        zip -r myrepo-windows-${{ steps.set_semver.outputs.semVer }}.zip . -i target/release/myrepo.exe
+        zip -r myrepo-windows-${{ steps.set_semver.outputs.semVer }}.zip . -i target/release/myrepo
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.2
