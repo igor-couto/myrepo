@@ -14,6 +14,8 @@ jobs:
 
     env:
       branch: ${{ github.head_ref || github.ref_name }}
+      CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER: /usr/bin/x86_64-w64-mingw32-gcc
+      CC: /usr/bin/x86_64-w64-mingw32-gcc
 
     outputs:
       semVer: ${{ steps.set_semver.outputs.semVer }}
@@ -26,14 +28,8 @@ jobs:
     - name: Setup Rust
       uses: actions-rs/toolchain@v1
       with:
-        profile: minimal
         toolchain: stable
         override: true
-    
-    - name: Build
-      uses: actions-rs/cargo@v1
-      with:
-        command: build
 
     - name: Git Fetch Unshallow
       run: git fetch --prune --tags --unshallow
@@ -57,9 +53,13 @@ jobs:
           echo "::set-output name=semVer::$GitVersion_SemVer"
         fi
 
+    - name: Install MinGW
+      run: sudo apt-get install -y mingw-w64
+
     - name: Release
       run: |
-        cargo build --release
+        rustup target add x86_64-pc-windows-msvc
+        cargo build --release --target=x86_64-pc-windows-msvc
 
     - name: Zip Content
       run: |
@@ -100,7 +100,7 @@ jobs:
       id: create_release
       uses: ncipollo/release-action@v1
       with:
-        allowUpdates: true
+        allowUpdates: true 
         draft: false
         tag: ${{ env.tag }}
         name: myrepo-${{ env.version }}

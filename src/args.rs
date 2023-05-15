@@ -68,7 +68,7 @@ pub fn print_usage_and_exit() {
     std::process::exit(0);
 }
 
-#[cfg(target_os = "windows")]
+//#[cfg(target_os = "windows")]
 fn set_username(username: &str) -> std::io::Result<()> {
     let output = Command::new("setx")
         .arg("MYREPO_GITHUB_USERNAME")
