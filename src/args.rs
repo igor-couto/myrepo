@@ -46,7 +46,7 @@ pub fn parse_arguments(mut args: Vec<String>) -> Args {
     }
 
     if let Some(username) = username {
-        match set_username_windows(&username) {
+        match set_username(&username) {
             Ok(_) => {
                 println!("The user {} has been defined successfully", username);
             }
@@ -68,7 +68,8 @@ pub fn print_usage_and_exit() {
     std::process::exit(0);
 }
 
-fn set_username_windows(username: &str) -> std::io::Result<()> {
+#[cfg(target_os = "windows")]
+fn set_username(username: &str) -> std::io::Result<()> {
     let output = Command::new("setx")
         .arg("MYREPO_GITHUB_USERNAME")
         .arg(username)
@@ -80,7 +81,6 @@ fn set_username_windows(username: &str) -> std::io::Result<()> {
             "Failed to set environment variable",
         ));
     }
-
     Ok(())
 }
 
