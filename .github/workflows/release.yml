@@ -1,6 +1,9 @@
 name: Publish
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 env:
   CARGO_TERM_COLOR: always
@@ -57,14 +60,6 @@ jobs:
     - name: Release
       run: |
         cargo build --release
-
-    - name: List files 
-      run: |
-        ls -la 
-
-    - name: List files in target/release
-      run: |
-        ls -la target/release
 
     - name: Zip Content
       run: |
