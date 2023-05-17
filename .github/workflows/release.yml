@@ -59,13 +59,13 @@ jobs:
 
     - name: Zip Content
       run: |
-        Compress-Archive -Path target/x86_64-pc-windows-msvc/release/myrepo.exe -DestinationPath myrepo-windows-${{ steps.set_semver.outputs.semVer }}.zip
+        Compress-Archive -Path target/x86_64-pc-windows-msvc/release/myrepo.exe -DestinationPath myrepo-v${{ steps.set_semver.outputs.semVer }}-windows-x86_64.zip
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.2
       with:
-        name: myrepo-windows-${{ steps.set_semver.outputs.semVer }}
-        path: myrepo-windows-${{ steps.set_semver.outputs.semVer }}.zip
+        name: myrepo-v${{ steps.set_semver.outputs.semVer }}-windows-x86_64
+        path: myrepo-v${{ steps.set_semver.outputs.semVer }}-windows-x86_64.zip
         if-no-files-found: error
   
   Publish:
