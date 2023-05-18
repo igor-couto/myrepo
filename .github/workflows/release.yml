@@ -21,10 +21,10 @@ jobs:
     steps:
 
     - name: Checkout the code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
     - name: Setup Rust
-      uses: actions-rs/toolchain@v1
+      uses: actions-rs/toolchain@v1.0.6
       with:
         toolchain: stable
         override: true
@@ -62,7 +62,7 @@ jobs:
         Compress-Archive -Path target/x86_64-pc-windows-msvc/release/myrepo.exe -DestinationPath myrepo-v${{ steps.set_semver.outputs.semVer }}-windows-x86_64.zip
     
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3
       with:
         name: myrepo-v${{ steps.set_semver.outputs.semVer }}-windows-x86_64
         path: myrepo-v${{ steps.set_semver.outputs.semVer }}-windows-x86_64.zip
@@ -81,7 +81,7 @@ jobs:
       packageId: 'myrepo'
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Git Fetch Unshallow
       run: git fetch --prune --tags --unshallow
