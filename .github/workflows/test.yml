@@ -1,6 +1,13 @@
 name: Tests
 
-on: push
+on: 
+  push:
+      paths-ignore:
+      - 'README.md'
+      - 'LICENCE'
+      - '.gitignore'
+      - '.githooks/'
+      - '.github/workflows/build.yml'
 
 env:
   CARGO_TERM_COLOR: always

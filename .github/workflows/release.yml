@@ -2,6 +2,14 @@ name: Publish
 
 on:
   push:
+    paths-ignore:
+      - 'README.md'
+      - 'LICENCE'
+      - '.gitignore'
+      - '.githooks/'
+      - 'tests/**'
+      - '.github/workflows/build.yml'
+      - '.github/workflows/test.yml'
     branches:
       - main
 
