@@ -1,5 +1,6 @@
 # myrepo
 
+[![GitHub Release](https://img.shields.io/github/v/release/igor-couto/myrepo?logo=github&sort=semver)](https://github.com/igor-couto/myrepo/releases/latest)
 [![Build Badge](https://github.com/igor-couto/myrepo/actions/workflows/build.yml/badge.svg)](https://github.com/igor-couto/myrepo/actions/workflows/build.yml)
 [![Test Badge](https://github.com/igor-couto/myrepo/actions/workflows/test.yml/badge.svg)](https://github.com/igor-couto/myrepo/actions/workflows/test.yml)
 
