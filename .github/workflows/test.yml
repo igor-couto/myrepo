@@ -21,12 +21,12 @@ jobs:
         override: true
     
     - name: Check formatting
-      uses: actions-rs/cargo@v1
+      uses: actions-rs/cargo@v1.0.1
       with:
         command: fmt
         args: --check
 
     - name: Run tests
-      uses: actions-rs/cargo@v1
+      uses: actions-rs/cargo@v1.0.1
       with:
         command: test
