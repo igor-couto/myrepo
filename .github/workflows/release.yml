@@ -76,7 +76,7 @@ jobs:
       branch: ${{ github.head_ref || github.ref_name }}
       version: ${{ needs.Release.outputs.semVer }}
       tag: v${{ needs.Release.outputs.semVer }}
-      windows_package_name: 'myrepo-windows-${{ needs.Release.outputs.semVer }}'
+      windows_package_name: 'myrepo-v${{ needs.Release.outputs.semVer }}-windows-x86_64'
       packageFileName: 'myrepo-windows-${{ needs.Release.outputs.semVer }}.exe'
       packageId: 'myrepo'
     steps:
